@@ -191,7 +191,6 @@ resource "aws_iam_role_policy_attachment" "default" {
 ## Below resource will create kms key. This key will used for encryption lambda function variables.
 ##-----------------------------------------------------------------------------
 data "aws_caller_identity" "current" {}
-data "aws_region" "current" {}
 
 resource "aws_kms_key" "kms" {
   count                   = var.enable && var.enable_kms ? !var.existing_cloudwatch_log_group ? 2 : 1 : 0
